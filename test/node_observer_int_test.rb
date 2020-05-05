@@ -5,10 +5,13 @@ require_relative 'test_helper'
 #   Tests the NodeObserverInt class.
 class NodeObserverIntTest < Minitest::Test
 
+  # Constants.
+  CLASS = NodeObserverInt
+
   # test_conf_doc_f_ex().
   # @description
-  #  The .travis.yml, CODE_OF_CONDUCT.md, Gemfile, LICENSE.txt, README.md, 
-  #  and .yardopts files exist.
+  #   The .travis.yml, CODE_OF_CONDUCT.md, Gemfile, LICENSE.txt, README.md,
+  #   and .yardopts files exist.
   def test_conf_doc_f_ex()
 
     assert_path_exists('.travis.yml')
@@ -31,13 +34,64 @@ class NodeObserverIntTest < Minitest::Test
   # @description
   #   Set fixtures.
   def setup()
+
+    @pub_cm  = CLASS.public_methods(false)
+    @pub_im  = CLASS.public_instance_methods(false)
+    @prot_im = CLASS.protected_instance_methods(false)
+    @priv_im = CLASS.private_instance_methods(false)
+    @priv_cm = CLASS.private_methods(false)
+
+  end
+
+  # test_pubcm_dec().
+  # @description
+  #   'NodeObserverInt.instance()' was declared.
+  def test_pubcm_dec()
+    assert_includes(@pub_cm, :instance)
+  end
+
+  # test_pubim_dec().
+  # @description
+  #   'subject(n = nil)', and 'changed_node(subject = nil)' were declared.
+  def test_pubim_dec()
+    assert_includes(@pub_im, :subject)
+    assert_includes(@pub_im, :changed_node)
+  end
+
+  # test_protim_dec().
+  # @description
+  #   'add(n = nil)', 'remove(n = nil)', 'receive_change(n = nil)',
+  #   'notify(n = nil)', 'observing(n = nil)', 'changed()',
+  #   'add_changed(n = nil)', and 'remove_changed(n = nil)' were declared.
+  def test_protim_dec()
+
+    assert_includes(@prot_im, :add)
+    assert_includes(@prot_im, :remove)
+    assert_includes(@prot_im, :receive_change)
+    assert_includes(@prot_im, :notify)
+    assert_includes(@prot_im, :observing)
+    assert_includes(@prot_im, :changed)
+    assert_includes(@prot_im, :add_changed)
+    assert_includes(@prot_im, :remove_changed)
+
+  end
+
+  # test_privim_dec().
+  # @description
+  #   'new()', 'observing=(s = nil)', and 'changed=(s = nil)' were declared.
+  def test_privm_dec()
+
+    assert_includes(@priv_cm, :new)
+    assert_includes(@priv_im, :observing=)
+    assert_includes(@priv_im, :changed=)
+    assert_includes(@priv_cm, :instance=)
+
   end
 
   # teardown().
   # @description
-  #  Cleanup.
+  #   Cleanup.
   def teardown()
   end
 
 end
-
