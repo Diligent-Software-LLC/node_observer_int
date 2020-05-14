@@ -41,22 +41,14 @@ class NodeObserverInt < ObserverInt
   def changed_node(subject = nil)
   end
 
-  protected
-
-  # observing().
+  # subject_changed(subject = nil).
   # @description
-  #   Gets 'observing'.
-  # @return [Set]
-  #   observing's reference.
-  def observing()
-  end
-
-  # changed().
-  # @description
-  #   Gets changed.
-  # @return [Set]
-  #   changed's reference.
-  def changed()
+  #   Adds an existing subject the changed Set.
+  # @param subject [Node]
+  #   A subject.
+  # @return [NilClass]
+  #   nil
+  def subject_changed(subject = nil)
   end
 
   # add(n = nil).
@@ -79,6 +71,25 @@ class NodeObserverInt < ObserverInt
   def remove(n = nil)
   end
 
+
+  protected
+
+  # observing().
+  # @description
+  #   Gets 'observing'.
+  # @return [Set]
+  #   observing's reference.
+  def observing()
+  end
+
+  # changed().
+  # @description
+  #   Gets changed.
+  # @return [Set]
+  #   changed's reference.
+  def changed()
+  end
+
   # add_changed(n = nil).
   # @description
   #   Adds changed a changed subject.
@@ -98,16 +109,6 @@ class NodeObserverInt < ObserverInt
   # @return [NilClass]
   #   nil.
   def remove_changed(n = nil)
-  end
-
-  # receive_change(n = nil).
-  # @description
-  #   Receives a Node's state change.
-  # @param n [Node]
-  #   An existing subject.
-  # @return [NilClass]
-  #   nil.
-  def receive_change(n = nil)
   end
 
   # notify(n = nil).
@@ -142,24 +143,34 @@ class NodeObserverInt < ObserverInt
   def changed=(s = nil)
   end
 
-  # self.new(subjects = Set[], changed_subjects = Set[]).
+  # receive_change(n = nil).
   # @description
-  #   Initializes a singleton instance.
+  #   Receives a Node's state change.
+  # @param n [Node]
+  #   An existing subject.
+  # @return [NilClass]
+  #   nil.
+  def receive_change(n = nil)
+  end
+
+  # initialize(subjects = Set[], changed_subjects = Set[]).
+  # @description
+  #   Initializes the singleton instance's instance variables.
   # @param subjects [Set]
   #   An empty Set.
   # @param changed_subjects [Set]
   #   An empty Set.
-  def self.new(subjects = Set[], changed_subjects = Set[])
+  def initialize(subjects = Set[], changed_subjects = Set[])
   end
 
-  # self.instance=(singleton = new()).
+  # self.instance=(singleton = nil).
   # @description
-  #   Initializes the singleton instance.
-  # @param singleton [NodeObserverInt]
+  #   Sets the singleton instance.
+  # @param singleton [NodeObserver]
   #   The instance.
   # @return [NodeObserver]
-  #   The default parameter.
-  def self.instance=(singleton = new())
+  #   The argument.
+  def self.instance=(singleton = nil)
   end
 
   private_class_method :new

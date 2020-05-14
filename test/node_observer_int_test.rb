@@ -52,22 +52,24 @@ class NodeObserverIntTest < Minitest::Test
 
   # test_pubim_dec().
   # @description
-  #   'subject(n = nil)', and 'changed_node(subject = nil)' were declared.
+  #   'subject(n = nil)', 'changed_node(subject = nil)', 'add(n = nil)',
+  #   'remove(n = nil)', and 'subject_changed(subject = nil)' were declared.
   def test_pubim_dec()
+
     assert_includes(@pub_im, :subject)
     assert_includes(@pub_im, :changed_node)
+    assert_includes(@pub_im, :add)
+    assert_includes(@pub_im, :remove)
+    assert_includes(@pub_im, :subject_changed)
+
   end
 
   # test_protim_dec().
   # @description
-  #   'add(n = nil)', 'remove(n = nil)', 'receive_change(n = nil)',
-  #   'notify(n = nil)', 'observing(n = nil)', 'changed()',
+  #   notify(n = nil)', 'observing(n = nil)', 'changed()',
   #   'add_changed(n = nil)', and 'remove_changed(n = nil)' were declared.
   def test_protim_dec()
 
-    assert_includes(@prot_im, :add)
-    assert_includes(@prot_im, :remove)
-    assert_includes(@prot_im, :receive_change)
     assert_includes(@prot_im, :notify)
     assert_includes(@prot_im, :observing)
     assert_includes(@prot_im, :changed)
@@ -78,13 +80,17 @@ class NodeObserverIntTest < Minitest::Test
 
   # test_privim_dec().
   # @description
-  #   'new()', 'observing=(s = nil)', and 'changed=(s = nil)' were declared.
+  #   'NodeObserverInt.new()', 'observing=(s = nil)', 'changed=(s = nil)',
+  #   'initialize(subjects = Set[], changed_subjects = Set[])',
+  #   'NodeObserverInt.instance=', and 'receive_change(n = nil)' were declared.
   def test_privm_dec()
 
     assert_includes(@priv_cm, :new)
+    assert_includes(@priv_im, :initialize)
     assert_includes(@priv_im, :observing=)
     assert_includes(@priv_im, :changed=)
     assert_includes(@priv_cm, :instance=)
+    assert_includes(@priv_im, :receive_change)
 
   end
 
