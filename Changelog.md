@@ -14,6 +14,7 @@
 'changed=(s = nil)', 
 'NodeObserverInt.new(subjects = Set[], changed_subjects = Set[])', and 
 'NodeObserverInt.instance=(singleton = new())'.
+- 'subject_changed(subject = nil)'.
 - Method declaration tests.
 
 ### Edited
