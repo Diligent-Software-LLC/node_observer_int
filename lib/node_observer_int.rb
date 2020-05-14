@@ -47,7 +47,7 @@ class NodeObserverInt < ObserverInt
   # @param subject [Node]
   #   A subject.
   # @return [NilClass]
-  #   nil
+  #   nil.
   def subject_changed(subject = nil)
   end
 
@@ -70,7 +70,6 @@ class NodeObserverInt < ObserverInt
   #   nil.
   def remove(n = nil)
   end
-
 
   protected
 
